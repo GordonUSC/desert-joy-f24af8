@@ -15,7 +15,7 @@ BEGIN:VEVENT
 UID:arenas@desertjoy
 DTSTAMP:20261019T120000Z
 DTSTART:20261106T230000Z
-DTEND:20261107T010000Z
+DTEND:20261107T060000Z
 SUMMARY:Desert Joy: Free Pride on Arenas
 LOCATION:Arenas Road\, Palm Springs
 DESCRIPTION: https://www.pspride.org/festival
@@ -51,7 +51,7 @@ BEGIN:VEVENT
 UID:eagle_nasttea@desertjoy
 DTSTAMP:20261019T120000Z
 DTSTART:20261107T220000Z
-DTEND:20261108T000000Z
+DTEND:20261108T030000Z
 SUMMARY:Desert Joy: The Eagle: NastTea
 LOCATION:67625 E Palm Canyon\, Cathedral City (21+)
 DESCRIPTION:Strong pick: free afternoon at the Eagle. https://www.eaglebarcc.com/nights
