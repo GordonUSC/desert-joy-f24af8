@@ -1,0 +1,77 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Desert Joy x Gordon//EN
+X-WR-CALNAME:Desert Joy x Gordon
+BEGIN:VEVENT
+UID:walkabout@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261106T010000Z
+DTEND:20261106T030000Z
+SUMMARY:Desert Joy: Arenas District Walkabout
+LOCATION:Arenas Road\, Palm Springs
+DESCRIPTION: https://www.pspride.org/post/pride-starts-here-arenas-district-walkabout-kicks-off-palm-springs-pride-on-november-5
+END:VEVENT
+BEGIN:VEVENT
+UID:arenas@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261106T230000Z
+DTEND:20261107T010000Z
+SUMMARY:Desert Joy: Free Pride on Arenas
+LOCATION:Arenas Road\, Palm Springs
+DESCRIPTION: https://www.pspride.org/festival
+END:VEVENT
+BEGIN:VEVENT
+UID:festival@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261107T190000Z
+DTEND:20261108T060000Z
+SUMMARY:Desert Joy: Pride festival\, downtown
+LOCATION:Downtown Palm Springs
+DESCRIPTION: https://www.pspride.org/festival
+END:VEVENT
+BEGIN:VEVENT
+UID:parade@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261108T180000Z
+DTEND:20261108T200000Z
+SUMMARY:Desert Joy: Pride parade
+LOCATION:Palm Canyon Drive\, Tachevah to Amado
+DESCRIPTION: https://www.pspride.org/parade-registration
+END:VEVENT
+BEGIN:VEVENT
+UID:eagle_fri@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261107T050000Z
+DTEND:20261107T100000Z
+SUMMARY:Desert Joy: The Eagle: Neon Jungle
+LOCATION:67625 E Palm Canyon\, Cathedral City (21+)
+DESCRIPTION: https://www.eaglebarcc.com/nights
+END:VEVENT
+BEGIN:VEVENT
+UID:eagle_nasttea@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261107T220000Z
+DTEND:20261108T000000Z
+SUMMARY:Desert Joy: The Eagle: NastTea
+LOCATION:67625 E Palm Canyon\, Cathedral City (21+)
+DESCRIPTION:Strong pick: free afternoon at the Eagle. https://www.eaglebarcc.com/nights
+END:VEVENT
+BEGIN:VEVENT
+UID:eagle_apex@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261108T050000Z
+DTEND:20261108T100000Z
+SUMMARY:Desert Joy: The Eagle: Apex
+LOCATION:67625 E Palm Canyon\, Cathedral City (21+)
+DESCRIPTION: https://www.eaglebarcc.com/nights
+END:VEVENT
+BEGIN:VEVENT
+UID:eagle_sun@desertjoy
+DTSTAMP:20261019T120000Z
+DTSTART:20261108T220000Z
+DTEND:20261109T100000Z
+SUMMARY:Desert Joy: The Eagle: Full Service
+LOCATION:67625 E Palm Canyon\, Cathedral City (21+)
+DESCRIPTION: https://www.eaglebarcc.com/nights
+END:VEVENT
+END:VCALENDAR
