@@ -1,0 +1,286 @@
+<!-- STYLE: Backglass (lived style: the pinball machine, screen printed on glass, lit from behind, louder than it needs to be) set in Palm Springs desert modern | WHY: Gordon is a game maker and the four of them are his four lights; a playable table makes the first two minutes a toy, not a document | ALT: Desert Modern (flat roof, long shadow, one impossible color), held as the fallback Gordon could switch to -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Desert Joy x Gordon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--night:#140A22;--glass:#22113A;--ink:#FFF4E6;--soft:#E9CFE6;--pink:#FF5FA2;--teal:#2FE0CF;--gold:#FFC23D;--violet:#A77BFF;--chrome:#D9DCE6;--sun:#FF8A4C;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--night);color:var(--ink)}
+body{font:17px/1.55 "Bricolage Grotesque",system-ui,sans-serif;overflow-x:hidden}
+a{color:var(--teal)}
+.wrap{max-width:560px;margin:0 auto;padding-inline:16px}
+.marquee{font-family:Monoton,"Bungee",sans-serif;font-weight:400;line-height:1.05;letter-spacing:.02em;text-align:center;margin:0;color:#FFE3F2;text-shadow:0 0 6px #FF5FA2,0 0 18px #FF5FA2,0 0 42px #FF8A4C;animation:buzz 4s infinite}
+@keyframes buzz{0%,92%,100%{opacity:1}93%{opacity:.55}95%{opacity:1}96%{opacity:.7}}
+.kick{font:400 12px Bungee,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h2{font:400 26px/1.1 Bungee,sans-serif;margin:6px 0 10px;text-wrap:balance}
+/* ATTRACT */
+#attract{position:relative;min-height:100svh;display:grid;place-items:end center;overflow:hidden;background:#000}
+#attract video,#attract img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#attract .veil{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(20,10,34,.92))}
+#attract .copy{position:relative;padding:0 16px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;max-width:560px}
+#attract .marquee{font-size:clamp(40px,12vw,68px)}
+#attract .sub{margin:10px 0 18px;color:var(--soft);font-size:16px}
+.start{font:400 20px Bungee,sans-serif;letter-spacing:.08em;color:#1B0C2A;background:linear-gradient(#FFE17A,#FFB22E);border:0;border-radius:999px;padding:16px 34px;box-shadow:0 0 0 4px rgba(255,194,61,.25),0 0 30px rgba(255,194,61,.6);cursor:pointer;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06);box-shadow:0 0 0 8px rgba(255,194,61,.15),0 0 46px rgba(255,194,61,.9)}}
+.hint{display:block;margin-top:10px;font-size:13px;color:var(--soft)}
+/* TABLE */
+#table{padding-block:34px 10px}
+.tablebox{position:relative;width:100%;max-width:520px;margin:14px auto 0;aspect-ratio:720/1290;border-radius:22px;overflow:hidden;box-shadow:0 0 0 6px #2B1A44,0 0 0 9px var(--chrome),0 30px 60px -20px #000}
+.tablebox img{width:100%;height:100%;object-fit:cover;display:block}
+.tgt{position:absolute;width:14%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tgt::after{content:"";position:absolute;inset:-12%;border-radius:50%;box-shadow:0 0 0 3px var(--c),0 0 26px 8px var(--c);opacity:.35;animation:attract 2.4s infinite;animation-delay:var(--dl)}
+.tgt[data-p=mason] span,.tgt[data-p=alex] span{top:auto;bottom:calc(100% + 4px)}
+.tgt.lit::after{opacity:1;animation:litpulse 1s infinite alternate}
+@keyframes attract{0%,60%,100%{opacity:.25}30%{opacity:.95}}
+@keyframes litpulse{to{box-shadow:0 0 0 4px var(--c),0 0 46px 18px var(--c)}}
+.tgt span{position:absolute;left:50%;top:calc(100% + 4px);transform:translateX(-50%);font:400 12px Bungee,sans-serif;letter-spacing:.06em;color:#fff;background:rgba(20,10,34,.82);padding:3px 8px;border-radius:999px;white-space:nowrap;border:1px solid var(--c)}
+.ball{position:absolute;width:5%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#C9CED8 35%,#6B7080 75%,#2B2F3A);box-shadow:0 2px 6px rgba(0,0,0,.5);left:91%;top:94%;transform:translate(-50%,-50%);pointer-events:none;opacity:0}
+.score{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.dot{width:16px;height:16px;border-radius:50%;background:#2B1A44;box-shadow:inset 0 0 0 2px var(--c)}
+.dot.on{background:var(--c);box-shadow:0 0 14px var(--c)}
+.scoretxt{text-align:center;font:400 13px Bungee,sans-serif;letter-spacing:.1em;color:var(--soft);margin-top:8px}
+/* PEOPLE */
+.person{margin-top:28px;border-radius:24px;padding:22px 18px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);position:relative;scroll-margin-top:16px;transition:transform .5s,box-shadow .5s}
+.person.reveal{animation:reveal .9s cubic-bezier(.2,.9,.2,1)}
+@keyframes reveal{0%{transform:scale(.92) rotate(-1.5deg);box-shadow:inset 0 0 0 2px var(--c),0 0 60px var(--c)}100%{transform:none}}
+.person h3{font:400 clamp(34px,10vw,48px)/1 Monoton,Bungee,sans-serif;margin:4px 0 2px;color:#fff;text-shadow:0 0 8px var(--c),0 0 24px var(--c)}
+.person .tag{font:400 12px Bungee,sans-serif;letter-spacing:.12em;color:var(--c)}
+.note{font-size:18px;line-height:1.6;margin:14px 0}
+.play{display:inline-flex;align-items:center;gap:10px;font:400 14px Bungee,sans-serif;color:#1B0C2A;background:var(--c);border:0;border-radius:999px;padding:10px 16px;cursor:pointer}
+.play i{width:0;height:0;border-left:10px solid #1B0C2A;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.tile{min-height:124px;cursor:pointer;outline:none}
+.tile .in{position:relative;width:100%;height:100%;min-height:124px}
+.tile.go .in{animation:flipx .5s ease-in-out}
+@keyframes flipx{50%{transform:scaleX(0)}}
+.face{position:absolute;inset:0;border-radius:16px;padding:12px;display:flex;flex-direction:column;justify-content:center;transition:opacity .01s linear .25s}
+.front{background:#2B1A44;box-shadow:inset 0 0 0 2px var(--c);font:400 15px/1.2 Bungee,sans-serif;text-align:center;align-items:center}
+.front small{display:block;margin-top:6px;font:600 12px "Bricolage Grotesque",sans-serif;color:var(--soft);letter-spacing:.06em}
+.back{background:var(--c);color:#1B0C2A;font-size:14px;line-height:1.35;opacity:0}
+.tile.flip .front{opacity:0}.tile.flip .back{opacity:1}
+.tile:focus-visible .in{outline:3px solid #fff;outline-offset:3px;border-radius:16px}
+.secret{margin-top:14px;font-size:15px;color:var(--soft);border-top:1px dashed rgba(255,255,255,.2);padding-top:12px}
+.secret b{color:var(--c);font:400 12px Bungee,sans-serif;letter-spacing:.1em;display:block}
+.song{display:inline-block;margin-top:10px;font-size:13px;color:var(--soft)}
+/* WEEKEND */
+.day{margin-top:18px}
+.day h4{font:400 18px Bungee,sans-serif;margin:0 0 8px;color:var(--gold)}
+.ev{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);margin-bottom:8px}
+.ev .b{flex:none;font:400 10px Bungee,sans-serif;letter-spacing:.06em;padding:3px 8px;border-radius:999px;margin-top:3px}
+.b.free{background:var(--teal);color:#08201E}.b.tix{background:var(--pink);color:#2A0617}.b.tbd{background:#5B4B72;color:#fff}
+.ev .t{min-width:0}.ev .t b{display:block}.ev .t span{font-size:14px;color:var(--soft)}
+.firm{font:400 10px Bungee,sans-serif;color:var(--gold);letter-spacing:.08em}
+/* IDEAS */
+#ideas .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{font:600 14px "Bricolage Grotesque",sans-serif;color:var(--ink);background:#2B1A44;border:1px solid var(--violet);border-radius:999px;padding:8px 12px;cursor:pointer}
+textarea{width:100%;min-height:96px;border-radius:14px;border:1px solid var(--violet);background:#1C0F2E;color:var(--ink);font:inherit;padding:12px}
+.send{display:inline-block;margin-top:10px;font:400 16px Bungee,sans-serif;color:#1B0C2A;background:var(--violet);border-radius:999px;padding:12px 20px;text-decoration:none}
+/* ANSWERS */
+#answers input{width:100%;font:inherit;padding:12px 14px;border-radius:14px;border:1px solid var(--teal);background:#1C0F2E;color:var(--ink)}
+details{border-radius:14px;background:rgba(255,255,255,.05);margin-top:8px;padding:12px 14px}
+summary{font-weight:800;cursor:pointer}
+details p{margin:8px 0 0;color:var(--soft)}
+.st{white-space:nowrap;font:400 10px Bungee,sans-serif;color:var(--gold);letter-spacing:.06em;margin-left:6px}
+section.blk{padding-block:34px}
+/* JACKPOT */
+#jackpot{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:rgba(10,4,18,.85);opacity:0;pointer-events:none;transition:opacity .4s}
+#jackpot.on{opacity:1;pointer-events:auto}
+#jackpot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+#jackpot .jbox{position:relative;text-align:center;padding:16px}
+#jackpot .marquee{font-size:clamp(44px,14vw,80px)}
+#jackpot p{max-width:30ch;margin:12px auto;font-size:18px}
+.conf{position:fixed;top:-20px;width:10px;height:16px;z-index:21;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.mute{font-size:12px;position:fixed;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));box-shadow:0 4px 14px rgba(0,0,0,.5);z-index:30;font:400 11px Bungee,sans-serif;background:rgba(20,10,34,.8);color:var(--ink);border:1px solid var(--chrome);border-radius:999px;padding:8px 12px;cursor:pointer}
+footer{padding-block:30px 60px;text-align:center;color:var(--soft);font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<button class="mute" id="mute" hidden>SOUND ON</button>
+
+<section id="attract">
+<img class="poster" src="video/bg-poster.jpg" alt="">
+<video id="bgv" src="video/bg.mp4" poster="video/bg-poster.jpg" autoplay muted loop playsinline></video>
+<div class="veil"></div>
+<div class="copy">
+<h1 class="marquee">Desert Joy<br>x Gordon</h1>
+<p class="sub">Palm Springs Pride, Nov 6 to 8. I turn 56 on the 9th.<br>Joe, Mason, Alex and Shannon: this table is for you.</p>
+<button class="start" id="start">PRESS START</button>
+<span class="hint">Sound on. Two minutes of play.</span>
+</div>
+</section>
+
+<div class="wrap">
+<section id="table">
+<div class="kick">Player one, that's you</div>
+<h2>Find your light</h2>
+<p>Four lights on this table, and each one is one of you. Tap your light and watch the ball find it.</p>
+<div class="tablebox" id="tb">
+<img src="video/pf-poster.jpg" alt="A Palm Springs pinball playfield with a pool, cactus bumpers and four glowing targets">
+<button class="tgt" data-p="mason" style="left:29.4%;top:66.5%;--c:var(--pink);--dl:0s" aria-label="Mason's light"><span>MASON</span></button>
+<button class="tgt" data-p="joe" style="left:41.7%;top:70.2%;--c:var(--teal);--dl:.6s" aria-label="Joe's light"><span>JOE</span></button>
+<button class="tgt" data-p="shannon" style="left:56.3%;top:70.2%;--c:var(--gold);--dl:1.2s" aria-label="Shannon's light"><span>SHANNON</span></button>
+<button class="tgt" data-p="alex" style="left:68.3%;top:66.3%;--c:var(--violet);--dl:1.8s" aria-label="Alex's light"><span>ALEX</span></button>
+<div class="ball" id="ball"></div>
+</div>
+<div class="score"><i class="dot" data-d="mason" style="--c:var(--pink)"></i><i class="dot" data-d="joe" style="--c:var(--teal)"></i><i class="dot" data-d="shannon" style="--c:var(--gold)"></i><i class="dot" data-d="alex" style="--c:var(--violet)"></i></div>
+<div class="scoretxt" id="scoretxt">LIGHT ALL FOUR FOR THE JACKPOT</div>
+</section>
+
+<article class="person" id="joe" style="--c:var(--teal)">
+<div class="tag">LIGHT TWO · LOVE A DUB</div>
+<h3>Joe</h3>
+<button class="play" data-v="audio/v_joe.mp3"><i></i>HEAR ME</button>
+<p class="note">Love a dub. Since "Barbie Girl" at The Café in 1998, you have been my person. You built my 50th, you count every head at every dinner, and when my flight got rerouted last year, your plan was to scoop me up at LAX and drive me out. Thank you for sharing my life. This weekend I mostly want to dance to "Together Again" with you somewhere under the palms. 😍</p>
+<div class="tiles">
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">FEB 8, 1998<small>TAP TO FLIP</small></div><div class="face back">The Café, San Francisco. "Are you a dancer?" Barbie Girl, then our song.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">SEPT 17, 2008<small>TAP TO FLIP</small></div><div class="face back">Janet at Staples. I asked you during "Together Again."</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">MAY 3, 2014<small>TAP TO FLIP</small></div><div class="face back">San Ramon. H+B in green and blue. This is where Heally-Bellamy happens.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">THE VOICEMAIL<small>TAP TO FLIP</small></div><div class="face back">"Hey. Just checking in. Love you. Bye." Seventy-five times, and every one lands.</div></div></div>
+</div>
+<p class="secret"><b>A LITTLE SECRET</b>Countdown is still your one big rave of the year, so there is zero pressure on a dance night. The pool, the Eagle, or just me: all wins.</p>
+<span class="song">Our song: "Together Again," Janet Jackson</span>
+</article>
+
+<article class="person" id="mason" style="--c:var(--pink)">
+<div class="tag">LIGHT ONE · BEST BEST FRIEND</div>
+<h3>Mason</h3>
+<button class="play" data-v="audio/v_mason.mp3"><i></i>HEAR ME</button>
+<p class="note">Mason! Best best friend in the universe. You wiped my happy tears at Cosmic Meadow on our ten-year Day 3 Rave-a-versary, you co-planned my 50th with Joe, and every dance floor comes alive the second you walk on. Shannon's spare bed is yours. Come straight from the convention and let me pamper my best friend. 😍</p>
+<div class="tiles">
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">THE WALKERVERSE<small>TAP TO FLIP</small></div><div class="face back">2022: "sharing the Walkerverse with the best friend in the universe."</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">DAY 3, TEN YEARS<small>TAP TO FLIP</small></div><div class="face back">Alison Wonderland, "Summertime Sadness x Sirens." We both sang. You caught my tears.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">THE TOAST<small>TAP TO FLIP</small></div><div class="face back">Your wedding to Myke: "nothing short of magical." I meant every word.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">EVERY EAGLE<small>TAP TO FLIP</small></div><div class="face back">"Sample every Eagle in every city... for science." Cathedral City is our next data point.</div></div></div>
+</div>
+<p class="secret"><b>A LITTLE SECRET</b>There is a Best Friend Box on my desk. You already know who's in it.</p>
+<span class="song">Your anthem: "Summertime Sadness x Sirens"</span>
+</article>
+
+<article class="person" id="alex" style="--c:var(--violet)">
+<div class="tag">LIGHT FOUR · PROM KING</div>
+<h3>Alex</h3>
+<button class="play" data-v="audio/v_alex.mp3"><i></i>HEAR ME</button>
+<p class="note">Alex. Last year you made my actual birthday feel so special and valued: Dick's with Tom, then we literally ran Tool Shed. Your wristband is waiting at the kiosk. Bring your crew and your line wisdom. 😍</p>
+<div class="tiles">
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">PROM KING<small>TAP TO FLIP</small></div><div class="face back">Riviera, 2025. Shannon said it was giving prom. I said Alex for prom king.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">LINE WHISPERER<small>TAP TO FLIP</small></div><div class="face back">Chill, 2024: "It moves constantly. You can also drink and vibe in line."</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">TOOL SHED<small>TAP TO FLIP</small></div><div class="face back">Sunday, my 55th. We literally ran it.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">SHHH<small>TAP TO FLIP</small></div><div class="face back">"I already got YOU one, of course... because you are loved."</div></div></div>
+</div>
+<p class="secret"><b>A LITTLE SECRET</b>Short on purpose. Less pizza. Pick what you want and skip the rest.</p>
+<span class="song">House rule: fresh pics only</span>
+</article>
+
+<article class="person" id="shannon" style="--c:var(--gold)">
+<div class="tag">LIGHT THREE · OUR HOST</div>
+<h3>Shannon</h3>
+<button class="play" data-v="audio/v_shannon.mp3"><i></i>HEAR ME</button>
+<p class="note">Shannon. You are in my origin story, from San Francisco in the nineties all the way to your front door. "It's your birthday. I support the dream." You said it, and then you did it, every single year. Thank you for a permanent place at your house at Pride. I feel, and I know, I am loved. 😍</p>
+<div class="tiles">
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">ORIGIN STORY<small>TAP TO FLIP</small></div><div class="face back">San Francisco, the nineties. The bridge from then to now is you.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">THIS IS YOUR LIFE<small>TAP TO FLIP</small></div><div class="face back">The food version: mac and cheese, Carolina chicken, Caesar. And lemon cake at 2 a.m.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">LOVE! VALOUR!<small>TAP TO FLIP</small></div><div class="face back">Our group chat, our poster, and our 25th posterversary coming up.</div></div></div>
+<div class="tile" role="button" tabindex="0" aria-label="Flip memory card"><div class="in"><div class="face front">FREE<small>TAP TO FLIP</small></div><div class="face back">Ultra Naté, our forever song. And our posterversary is next.</div></div></div>
+</div>
+<p class="secret"><b>A LITTLE SECRET</b>You call me GBH. I call your house home at Pride.</p>
+<span class="song">Your song: "Free," Ultra Naté</span>
+</article>
+
+<section class="blk" id="weekend">
+<model-viewer id="mv" src="model/discoball.glb" alt="A disco ball you can spin" auto-rotate auto-rotate-delay="0" rotation-per-second="40deg" camera-controls disable-zoom interaction-prompt="none" environment-image="neutral" exposure="1.3" shadow-intensity="0" style="width:180px;height:180px;margin:0 auto;display:block;background:transparent;--poster-color:transparent"></model-viewer>
+<p style="text-align:center;font-size:13px;color:var(--soft);margin:0 0 14px">Spin the disco ball. Go on.</p>
+<div class="kick">A weekend of possibility</div>
+<h2>Come for any of it</h2>
+<p>Nothing here is homework. These are open doors. The ones marked <span class="firm">WE'RE GOING</span> are where you will find me and Joe. Everything else is a maybe we can choose together.</p>
+<div id="days"><div class="day"><h4>Thursday, Nov 5</h4><div class="ev"><span class="b free">FREE</span><div class="t"><b><a href="https://www.pspride.org/post/pride-starts-here-arenas-district-walkabout-kicks-off-palm-springs-pride-on-november-5" target="_blank" rel="noopener">Arenas District Walkabout</a></b><span>Thu Nov 5, from 5 pm · Arenas Road, Palm Springs</span></div></div></div><div class="day"><h4>Friday, Nov 6</h4><div class="ev"><span class="b free">FREE</span><div class="t"><b><a href="https://www.pspride.org/festival" target="_blank" rel="noopener">Free Pride on Arenas</a></b><span>Fri Nov 6, from 3 pm (closing 10 pm or 11:30 pm, sources disagree) · Arenas Road, Palm Springs</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://leparties.com/events/pride-massive-palm-springs/" target="_blank" rel="noopener">Welcome Pool at the Ace (Pride Massive)</a></b><span>Fri Nov 6, noon to 6 pm · Ace Hotel, Palm Springs · TBD (live price not shown)</span></div></div><div class="ev"><span class="b tix">TBD</span><div class="t"><b><a href="https://www.pspride.org/event-details-registration/pride-pool-party-1" target="_blank" rel="noopener">Official Pride Pool Party</a></b><span>Fri Nov 6, 2 to 6 pm · Palm Springs Surf Club</span></div></div><div class="ev"><span class="b tbd">TBD</span><div class="t"><b><a href="https://www.pspride.org/event-details-registration/lady-bunny-lola-rose-pride-2026-11-06-20-00" target="_blank" rel="noopener">Lady Bunny + Tina Turntables</a></b><span>Fri Nov 6, 8 pm to midnight · Lola Rose, Thompson Palm Springs</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eventim.us/event/desert-heat-palm-springs-pride/698921" target="_blank" rel="noopener">TUFF (Desert Heat)</a></b><span>Fri Nov 6, 9 pm to 4 am · Zoso, 150 S Indian Canyon (21+) · GA $89.99 / VIP $99.78, fees included. The Zoso weekend pass only pays off if you want all four Zoso parties.</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eaglebarcc.com/nights" target="_blank" rel="noopener">The Eagle</a> <span class="firm">WE'RE GOING</span></b><span>Fri Nov 6 to Sun Nov 8, four events (below) · 67625 E Palm Canyon, Cathedral City (21+) · Two free events; Fri and Sat nights $50 each before fees, no refunds. We&#x27;re going. Which night is still open.</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eaglebarcc.com/nights" target="_blank" rel="noopener">The Eagle: Neon Jungle</a></b><span>Fri Nov 6, 9 pm to 2 am · 67625 E Palm Canyon, Cathedral City (21+) · $50 before fees, no refunds</span></div></div></div><div class="day"><h4>Saturday, Nov 7</h4><div class="ev"><span class="b free">FREE</span><div class="t"><b><a href="https://www.pspride.org/festival" target="_blank" rel="noopener">Pride festival, downtown</a></b><span>Sat Nov 7, 11 am to 10 pm · Downtown Palm Springs</span></div></div><div class="ev"><span class="b free">FREE</span><div class="t"><b><a href="https://www.eaglebarcc.com/nights" target="_blank" rel="noopener">The Eagle: NastTea</a></b><span>Sat Nov 7, 2 to 7 pm · 67625 E Palm Canyon, Cathedral City (21+). Strong pick: free afternoon at the Eagle.</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eaglebarcc.com/nights" target="_blank" rel="noopener">The Eagle: Apex</a></b><span>Sat Nov 7, 9 pm to 2 am · 67625 E Palm Canyon, Cathedral City (21+) · $50 before fees, no refunds</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eventbrite.com/cc/drag-brunch-at-one-eleven-bar-654729/" target="_blank" rel="noopener">ICONIC drag brunch</a></b><span>Sat Nov 7, 11 am or 2 pm · One Eleven, Cathedral City · TBD (ticket plus meal)</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.pspride.org/event-details-registration/ccbc-rainbow-splash-pool-party-2026" target="_blank" rel="noopener">Rainbow Splash pool party</a></b><span>Sat Nov 7, noon to 4 pm · CCBC, Cathedral City (clothing-optional) · $45 + fee advance / $55 door</span></div></div><div class="ev"><span class="b tbd">TBD</span><div class="t"><b><a href="https://www.hyattexperiences.com/thompson-hotels/pspaz?experienceId=lola-rose-pride-1eff8868" target="_blank" rel="noopener">Tracy Young + Hector Fonseca</a></b><span>Sat Nov 7, 8 pm to midnight · Lola Rose, Thompson Palm Springs</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eventbrite.com/e/prime-palm-springs-pride-tickets-1998997014883" target="_blank" rel="noopener">PRIME 10th anniversary</a></b><span>Sat Nov 7, 9 pm to 2 am · Sonoran, 1555 S Palm Canyon · TBD (live price not shown)</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eventim.us/event/desert-heat-palm-springs-pride/698921" target="_blank" rel="noopener">GPS (Desert Heat)</a></b><span>Sat Nov 7, 9 pm to 4 am · Zoso (21+) · GA $99.69 / VIP $112.39, fees included. The Zoso weekend pass only pays off if you want all four Zoso parties.</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://leparties.com/events/colossal-pool-party-pride-massive/" target="_blank" rel="noopener">Locker Room (Pride Massive)</a></b><span>Sat Nov 7, 10 pm to late · Ace Hotel Event Center · TBD (unverified)</span></div></div><div class="ev"><span class="b tbd">TBD</span><div class="t"><b><a href="https://www.brothersofthedesert.org/events/palm-springs-pride-brothers-of-the-desert-presents-palm-springs-is-burning-mini-ball-presentation" target="_blank" rel="noopener">Palm Springs Is Burning mini ball</a></b><span>Sat Nov 7, 8 to 9 pm · TBD</span></div></div></div><div class="day"><h4>Sunday, Nov 8</h4><div class="ev"><span class="b free">FREE</span><div class="t"><b><a href="https://www.pspride.org/parade-registration" target="_blank" rel="noopener">Pride parade</a></b><span>Sun Nov 8, 10 am to noon · Palm Canyon Drive, Tachevah to Amado</span></div></div><div class="ev"><span class="b free">FREE</span><div class="t"><b><a href="https://www.eaglebarcc.com/nights" target="_blank" rel="noopener">The Eagle: Full Service</a></b><span>Sun Nov 8, 2 pm to 2 am · 67625 E Palm Canyon, Cathedral City (21+)</span></div></div><div class="ev"><span class="b tix">TICKET</span><div class="t"><b><a href="https://www.eventim.us/event/desert-heat-palm-springs-pride/698921" target="_blank" rel="noopener">buck pool party (Desert Heat)</a></b><span>Sun Nov 8, 11 am to 6 pm · Zoso (21+) · GA $56.14 / VIP $79.23, fees included. The Zoso weekend pass only pays off if you want all four Zoso parties.</span></div></div><div class="ev"><span class="b tbd">TBD</span><div class="t"><b>Tim and Dan&#x27;s Pride pool brunch</b><span>Sun Nov 8, 11:30 am to 4 pm · Cathedral City (private address). Private party, ask Gordon.</span></div></div></div><div class="day"><h4>All weekend</h4><div class="ev"><span class="b tbd">INFO</span><div class="t"><b>Skip the Line All Access wristbands <span class="firm">YOU HAVE IT</span></b><span>Valid Fri Nov 6 to Sun Nov 8. Already bought for Gordon, Joe, Mason and Alex. Pickup at the Pride Kiosk on Arenas Road: Fri and Sat noon to 11 pm, Sun noon to 5.</span></div></div><div class="ev"><span class="b tbd">INFO</span><div class="t"><b>Shannon&#x27;s house <span class="firm">YOU HAVE IT</span></b><span>The weekend. Gordon and Joe, plus Mason in the spare bed.</span></div></div></div></div>
+</section>
+
+<section class="blk" id="ideas">
+<div class="kick">Your ideas are the fun</div>
+<h2>What would make it magic?</h2>
+<p>This weekend gets better with your ideas in it. A song, a pool, a dinner, a silly plan, someone we should drag along. Every single idea gets read.</p>
+<div class="chips">
+<button class="chip">A song for the weekend playlist</button>
+<button class="chip">A dinner idea</button>
+<button class="chip">A pool or party we should hit</button>
+<button class="chip">Something silly for Sunday</button>
+<button class="chip">A birthday surprise for Gordon</button>
+</div>
+<textarea id="idea" placeholder="Hiiii Gordon, my idea is..."></textarea>
+<a class="send" id="send" href="sms:+18184727283">TEXT IT TO GORDON</a>
+<p style="font-size:13px;color:var(--soft)">It opens your messages to Gordon with your idea filled in. Or just tell him at the pool.</p>
+</section>
+
+<section class="blk" id="answers">
+<div class="kick">Easy answers</div>
+<h2>Ask the table</h2>
+<input id="q" type="search" placeholder="Try: passes, Eagle, sleep, Sunday" aria-label="Search the answers">
+<div id="faq"><details><summary>When is this?<span class="st">INFO</span></summary><p>Pride runs Thu Nov 5 to Sun Nov 8, and my birthday is Monday the 9th. We&#x27;re there Fri Nov 6 to Sun Nov 8. Come for any of it.</p></details><details><summary>When should I get there?<span class="st">TO CONFIRM</span></summary><p>Whenever the desert calls you. Mason, I&#x27;ve got you rolling in around Sat Nov 7 after your convention, and that&#x27;s perfect.</p></details><details><summary>Where are we sleeping?<span class="st">BOOKED</span></summary><p>Shannon&#x27;s house, thanks to the most generous host in the desert. Joe and I are there, and the spare bed is Mason&#x27;s. Alex, wherever you land, we&#x27;ll find you.</p></details><details><summary>What are the four passes?<span class="st">BOOKED</span></summary><p>Skip the Line All Access passes, already bought: me, Joe, Mason and Alex. Good Fri Nov 6 to Sun Nov 8. They get us past the line at Hunters, Blackbook, Quadz, Dick&#x27;s and Chill during regular hours.</p></details><details><summary>How do we pick up the passes?<span class="st">TO CONFIRM</span></summary><p>All four are under my name, so we go together. Pride Kiosk on Arenas Road: Fri and Sat noon to 11 pm, Sun noon to 5 (Thu noon to 7). Once a wristband is on, it can&#x27;t be moved, and lost ones aren&#x27;t replaced.</p></details><details><summary>Which night is the Eagle?<span class="st">TO CONFIRM</span></summary><p>The Eagle is a must, the three of us love it. Cathedral City, all weekend: Neon Jungle Fri 9 pm to 2 am, NastTea Sat 2 to 7 pm (free), Apex Sat 9 pm to 2 am, Full Service Sun 2 pm to 2 am (free). Friday and Saturday nights are $50 before fees, no refunds.</p></details><details><summary>What are the big dance nights?<span class="st">NOT BOOKED YET</span></summary><p>Saturday has two big ones: Locker Room at the Ace, 10 pm to late, or GPS at Zoso, 9 pm to 4 am. Every dance night is a maybe. Come for the one that calls you.</p></details><details><summary>What&#x27;s Friday?<span class="st">NOT BOOKED YET</span></summary><p>Start in the sun: the Ace pool, noon to 6, or Surf Club, 2 to 6. Free Pride on Arenas from 3 pm. Then Lady Bunny at Lola Rose, 8 to midnight, or TUFF at Zoso, 9 pm to 4 am.</p></details><details><summary>What&#x27;s Saturday daytime?<span class="st">NOT BOOKED YET</span></summary><p>Pick your morning: the ICONIC drag brunch at One Eleven, 11 am or 2 pm. Rainbow Splash at CCBC, noon to 4, clothing-optional, $45 plus fee in advance. Or the free festival downtown, 11 am to 10 pm.</p></details><details><summary>Parade or Tim and Dan&#x27;s brunch?<span class="st">TO CONFIRM</span></summary><p>Both are Sunday and they overlap. The parade is 10 am to noon on Palm Canyon. Tim and Dan&#x27;s pool brunch in Cathedral City is 11:30 to 4. Do one, or catch the start of the parade and slide over.</p></details><details><summary>Is there a Sunday night party?<span class="st">NOT BOOKED YET</span></summary><p>Sunday is the drive home to LA, so no big night. If you&#x27;re staying on, the buck pool party at Zoso runs Sunday 11 am to 6 pm.</p></details><details><summary>What about Monday, your birthday?<span class="st">INFO</span></summary><p>I&#x27;m back in LA teaching at USC at 10 am. The whole weekend is the birthday.</p></details><details><summary>What&#x27;s actually booked?<span class="st">BOOKED</span></summary><p>Two things are set: Shannon&#x27;s house and our four passes. Everything else is a menu of possibilities. Pick what lights you up and grab your own ticket.</p></details><details><summary>What should I pack?<span class="st">INFO</span></summary><p>Swimsuit, sunscreen, comfortable shoes for Arenas, one going-out look, and your ID. The Zoso parties are 21 and up.</p></details><details><summary>I have an idea. How do I share it?<span class="st">INFO</span></summary><p>Text me. Your ideas are how this weekend gets even better.</p></details></div>
+</section>
+
+<footer>Made with love for Joe, Mason, Alex and Shannon.<br>Art by Higgsfield, sound and Gordon's voice by ElevenLabs, built by Darby.<br>See you in the desert. 😍</footer>
+</div>
+
+<div id="jackpot" aria-hidden="true"><video id="jv" src="video/dance.mp4" muted loop playsinline></video><div class="jbox"><div class="marquee">JACKPOT</div><p>All four lights. That's my whole heart on one table. Bring your ideas, your dancing shoes, and you.</p><button class="start" id="jclose">KEEP PLAYING</button></div></div>
+
+<script>
+(function(){
+var A={};function snd(n,v){try{var a=A[n]||(A[n]=new Audio('audio/'+n+'.mp3'));a.currentTime=0;a.volume=v||1;a.play().catch(function(){});}catch(e){}}
+var mv=document.getElementById("mv");if(mv){mv.addEventListener("load",function(){try{var m=mv.model&&mv.model.materials[0];if(m){m.pbrMetallicRoughness.setMetallicFactor(1);m.pbrMetallicRoughness.setRoughnessFactor(.12);m.pbrMetallicRoughness.setBaseColorFactor([1,.86,.95,1]);}}catch(e){}});mv.addEventListener("pointerdown",function(){snd("bumper",.5)});}
+var music=new Audio('audio/music.mp3');music.loop=true;music.volume=.28;
+var voice=null,on=false,muted=false,lit={};
+function say(src){try{if(voice)voice.pause();voice=new Audio(src);voice.volume=1;music.volume=muted?0:.1;voice.onended=function(){music.volume=muted?0:.28};if(!muted)voice.play().catch(function(){});}catch(e){}}
+var mute=document.getElementById('mute');
+mute.onclick=function(){muted=!muted;mute.textContent=muted?'SOUND OFF':'SOUND ON';music.muted=muted;if(voice)voice.muted=muted;};
+document.getElementById('start').onclick=function(){
+ on=true;mute.hidden=false;snd('launch',.9);music.play().catch(function(){});setTimeout(function(){say('audio/v_intro.mp3')},700);
+ document.getElementById('table').scrollIntoView({behavior:'smooth'});
+};
+var tb=document.getElementById('tb'),ball=document.getElementById('ball');
+function fly(t,cb){
+ var x=parseFloat(t.style.left),y=parseFloat(t.style.top);
+ if(!ball.animate){cb();return}
+ ball.style.opacity=1;snd('flipper',.8);
+ var an=ball.animate([{left:'91%',top:'94%'},{left:'93%',top:'18%'},{left:'60%',top:'8%'},{left:'45%',top:'30%',offset:.55},{left:'30%',top:'45%'},{left:x+'%',top:(y-4)+'%'}],{duration:1300,easing:'cubic-bezier(.3,.6,.4,1)'});
+ setTimeout(function(){snd('bumper',.8)},700);
+ an.onfinish=function(){ball.style.left=x+'%';ball.style.top=(y-4)+'%';cb();setTimeout(function(){ball.style.opacity=0},400)};
+}
+function hit(p,t){
+ if(!on){on=true;mute.hidden=false;music.play().catch(function(){});}
+ fly(t,function(){
+  t.classList.add('lit');snd('jackpot',.7);lit[p]=1;
+  document.querySelector('.dot[data-d="'+p+'"]').classList.add('on');
+  var n=Object.keys(lit).length;document.getElementById('scoretxt').textContent=n<4?(n+' OF 4 LIT. KEEP GOING'):'JACKPOT!';
+  var el=document.getElementById(p);el.classList.remove('reveal');void el.offsetWidth;el.classList.add('reveal');
+  setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});say(el.querySelector('.play').dataset.v)},350);
+  if(n===4&&!lit._j){lit._j=1;setTimeout(jackpot,9500);}
+ });
+}
+document.querySelectorAll('.tgt').forEach(function(t){t.onclick=function(){hit(t.dataset.p,t)}});
+document.querySelectorAll('.play').forEach(function(b){b.onclick=function(){say(b.dataset.v)}});
+document.querySelectorAll('.tile').forEach(function(b){function f(){b.classList.remove('go');void b.offsetWidth;b.classList.add('go');b.classList.toggle('flip');snd('flipper',.5)};b.onclick=f;b.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}}});
+function jackpot(){
+ var j=document.getElementById('jackpot');j.classList.add('on');j.setAttribute('aria-hidden','false');
+ var v=document.getElementById('jv');v.play().catch(function(){});snd('jackpot',1);setTimeout(function(){say('audio/v_jackpot.mp3')},500);
+ var cs=['#FF5FA2','#2FE0CF','#FFC23D','#A77BFF','#FF8A4C'];
+ for(var i=0;i<90;i++){var c=document.createElement('i');c.className='conf';c.style.left=Math.random()*100+'vw';c.style.background=cs[i%5];c.style.animationDuration=(2.4+Math.random()*2.6)+'s';c.style.animationDelay=(Math.random()*1.2)+'s';document.body.appendChild(c);setTimeout(function(x){return function(){x.remove()}}(c),6500);}
+}
+document.getElementById('jclose').onclick=function(){document.querySelectorAll('.conf').forEach(function(c){c.remove()});var j=document.getElementById('jackpot');j.classList.remove('on');j.setAttribute('aria-hidden','true');document.getElementById('jv').pause();document.getElementById('weekend').scrollIntoView({behavior:'smooth'})};
+var idea=document.getElementById('idea'),send=document.getElementById('send');
+function upd(){send.href='sms:+18184727283&body='+encodeURIComponent(idea.value||'Hiiii Gordon, my idea for the weekend: ')}
+idea.oninput=upd;upd();
+document.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){idea.value='Hiiii Gordon! '+c.textContent+': ';idea.focus();upd();snd('bumper',.5)}});
+var q=document.getElementById('q');q.oninput=function(){var s=q.value.toLowerCase();document.querySelectorAll('#faq details').forEach(function(d){var m=!s||d.textContent.toLowerCase().indexOf(s)>-1;d.hidden=!m;if(s&&m)d.open=true})};
+})();
+</script>
+</body>
+</html>
